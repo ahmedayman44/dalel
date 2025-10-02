@@ -3,15 +3,17 @@ import 'package:dalel/features/onboarding/presentation/screens/on_boaarding_scre
 import 'package:dalel/features/splash/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
-final router = GoRouter(
-  routes: [
-    GoRoute(path: '/', builder: (context, state) => SplashScreen()),
-    GoRoute(path: 'onboarding', builder: (context, state) => OnBoardingView()),
-    GoRoute(path: 'home', builder: (context, state) => HomeView()),
-    GoRoute(path: ''),
-  ],
-);
-
+class AppRouter {
+  static const String konboarding = '/onboarding';
+  static const String khome = '/home';
+  static final router = GoRouter(
+    routes: [
+      GoRoute(path: '/', builder: (context, state) => SplashScreen()),
+      GoRoute(path: konboarding, builder: (context, state) => OnBoardingView()),
+      GoRoute(path: khome, builder: (context, state) => HomeView()),
+    ],
+  );
+}
  //! second type of routes
 
 // class Routes {
