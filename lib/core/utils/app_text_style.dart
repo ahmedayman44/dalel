@@ -8,4 +8,10 @@ class Styles {
     color: AppColor.deepBrown,
     fontFamily: 'Pacifico',
   );
+  static final pacifico400style33 = TextStyle(
+    fontSize: 33,
+    color: AppColor.grey,
+    fontFamily: 'Pacifico',
+    fontWeight: FontWeight.w400,
+  );
 }
