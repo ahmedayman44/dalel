@@ -1,3 +1,7 @@
+import 'package:dalel/core/utils/app_strings.dart';
+import 'package:dalel/core/widgets/custom_button.dart';
+import 'package:dalel/features/onboarding/presentation/widgets/custom_skip_.dart';
+import 'package:dalel/features/onboarding/presentation/widgets/on_boarding_body_view.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatelessWidget {
@@ -5,6 +9,21 @@ class OnBoardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.red);
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              SizedBox(height: 40),
+              CustomSkipWidget(),
+              OnBoaardingWidgetBody(),
+              CustomButton(textButton: AppStrings.next),
+              SizedBox(height: 17),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
