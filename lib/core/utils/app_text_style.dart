@@ -20,10 +20,28 @@ class Styles {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
   );
+  static final poppins500style15 = TextStyle(
+    fontSize: 15,
+    color: AppColor.grey,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+  );
   static final poppins300style16 = TextStyle(
     fontSize: 16,
     color: Colors.black,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w300,
+  );
+  static final poppins400style12 = TextStyle(
+    fontSize: 12,
+    color: AppColor.deepGrey,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+  );
+  static final poppins600style28 = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+    fontFamily: 'Poppins',
   );
 }
