@@ -5,17 +5,27 @@ import 'package:flutter/material.dart';
 
 class OnBoaardingWidgetBody extends StatelessWidget {
   OnBoaardingWidgetBody({super.key});
-  final _controller = PageController();
+  final PageController _controller = PageController();
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 500,
       child: PageView.builder(
         controller: _controller,
         itemCount: 3,
         itemBuilder: (context, index) {
           return Column(
             children: [
-              Image.asset(Assets.assetsImagesOnBoarding),
+              Container(
+                height: 290,
+                width: 343,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(Assets.assetsImagesOnBoarding),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
               SizedBox(height: 24),
               CustomSmoothPageIndictor(controller: _controller),
               SizedBox(height: 32),
@@ -23,6 +33,8 @@ class OnBoaardingWidgetBody extends StatelessWidget {
                 "Explore The History With Dalel in a smart way",
                 style: Styles.poppins500style24,
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: 16),
               Text(

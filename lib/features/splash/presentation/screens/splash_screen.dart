@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void delayedNavigate(context) {
     Future.delayed(Duration(seconds: 5), () {
-      navigateToOnBoarding(context);
+      navigateToPushReplacement(context);
     });
   }
 }
