@@ -1,18 +1,25 @@
 import 'package:dalel/core/utils/app_text_style.dart';
-import 'package:dalel/core/utils/assets.dart';
+import 'package:dalel/features/onboarding/data/model/on_boarding_model.dart';
 import 'package:dalel/features/onboarding/presentation/widgets/custom_smooth_indictor.dart';
 import 'package:flutter/material.dart';
 
 class OnBoaardingWidgetBody extends StatelessWidget {
-  OnBoaardingWidgetBody({super.key});
-  final PageController _controller = PageController();
+  const OnBoaardingWidgetBody({
+    super.key,
+    required this.controller,
+    this.onPageChanged,
+  });
+  final PageController controller;
+  final void Function(int)? onPageChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 500,
       child: PageView.builder(
-        controller: _controller,
-        itemCount: 3,
+        onPageChanged: onPageChanged,
+        controller: controller,
+        itemCount: onBoardingData.length,
+
         itemBuilder: (context, index) {
           return Column(
             children: [
@@ -21,16 +28,16 @@ class OnBoaardingWidgetBody extends StatelessWidget {
                 width: 343,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(Assets.assetsImagesOnBoarding),
+                    image: AssetImage(onBoardingData[index].image),
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
               SizedBox(height: 24),
-              CustomSmoothPageIndictor(controller: _controller),
+              CustomSmoothPageIndictor(controller: controller),
               SizedBox(height: 32),
               Text(
-                "Explore The History With Dalel in a smart way",
+                onBoardingData[index].title,
                 style: Styles.poppins500style24,
                 textAlign: TextAlign.center,
                 maxLines: 2,
@@ -38,7 +45,7 @@ class OnBoaardingWidgetBody extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Text(
-                "Explore The History With Dalel in a smart way",
+                onBoardingData[index].subTitle,
                 style: Styles.poppins300style16,
                 textAlign: TextAlign.center,
               ),

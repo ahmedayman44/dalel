@@ -1,4 +1,6 @@
 import 'package:dalel/core/functions/custom_navigate.dart';
+import 'package:dalel/core/routes/routes.dart';
+import 'package:dalel/core/utils/app_constant.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
 import 'package:dalel/features/splash/presentation/widgets/sliding_text.dart';
@@ -19,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     initSlidingAnimation();
-    delayedNavigate(context);
+    delayedNavigate(context, AppRouter.konboarding);
   }
 
   void initSlidingAnimation() {
@@ -56,9 +58,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  void delayedNavigate(context) {
-    Future.delayed(Duration(seconds: 5), () {
-      navigateToPushReplacement(context);
+  void delayedNavigate(context, path) {
+    Future.delayed(AppConstant.delayedNavigate, () {
+      customReplacementNavigate(context, path);
     });
   }
 }
