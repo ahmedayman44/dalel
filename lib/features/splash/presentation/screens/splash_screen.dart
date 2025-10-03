@@ -1,6 +1,7 @@
 import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/functions/custom_navigate.dart';
 import 'package:dalel/core/routes/routes.dart';
+import 'package:dalel/core/services/servece_locator.dart';
 import 'package:dalel/core/utils/app_constant.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
@@ -20,8 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // initSlidingAnimation();
-    final onBoardingVisited =
-        CacheHelper().getData(key: "OnBoardingVisited") ?? false;
+    bool onBoardingVisited =
+        getIt<CacheHelper>().getData(key: "OnBoardingVisited") ?? false;
     if (onBoardingVisited == true) {
       delayedNavigate(context, AppRouter.ksignUp);
     } else {

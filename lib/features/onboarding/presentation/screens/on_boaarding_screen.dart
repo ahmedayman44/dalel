@@ -1,6 +1,7 @@
 import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/functions/custom_navigate.dart';
 import 'package:dalel/core/routes/routes.dart';
+import 'package:dalel/core/services/servece_locator.dart';
 import 'package:dalel/features/onboarding/presentation/widgets/custom_nav_bar.dart';
 import 'package:dalel/features/onboarding/presentation/widgets/get_buttons.dart';
 import 'package:dalel/features/onboarding/presentation/widgets/on_boarding_widget_body.dart';
@@ -29,7 +30,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               CustomNavBar(
                 onTap: () {
                   customReplacementNavigate(context, AppRouter.ksignUp);
-                  CacheHelper().saveData(key: "OnBoardingVisited", value: true);
+                  getIt<CacheHelper>().saveData(
+                    key: "OnBoardingVisited",
+                    value: true,
+                  );
                 },
               ),
               OnBoaardingWidgetBody(
