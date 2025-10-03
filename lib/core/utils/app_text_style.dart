@@ -1,6 +1,5 @@
 import 'package:dalel/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Styles {
   static final pacifico400style64 = TextStyle(

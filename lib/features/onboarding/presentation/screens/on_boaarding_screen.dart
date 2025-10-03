@@ -1,3 +1,4 @@
+import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/functions/custom_navigate.dart';
 import 'package:dalel/core/routes/routes.dart';
 import 'package:dalel/features/onboarding/presentation/widgets/custom_nav_bar.dart';
@@ -28,6 +29,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               CustomNavBar(
                 onTap: () {
                   customReplacementNavigate(context, AppRouter.ksignUp);
+                  CacheHelper().saveData(key: "OnBoardingVisited", value: true);
                 },
               ),
               OnBoaardingWidgetBody(

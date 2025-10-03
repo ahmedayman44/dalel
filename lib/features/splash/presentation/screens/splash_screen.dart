@@ -1,9 +1,9 @@
+import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/functions/custom_navigate.dart';
 import 'package:dalel/core/routes/routes.dart';
 import 'package:dalel/core/utils/app_constant.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
-import 'package:dalel/features/splash/presentation/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,34 +13,40 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
-  late Animation<Offset> slidingAnimation;
+class _SplashScreenState extends State<SplashScreen> {
+  //with SingleTickerProviderStateMixin {
+  //late AnimationController animationController;
+  //late Animation<Offset> slidingAnimation;
   @override
   void initState() {
+    // initSlidingAnimation();
+    final onBoardingVisited =
+        CacheHelper().getData(key: "OnBoardingVisited") ?? false;
+    if (onBoardingVisited == true) {
+      delayedNavigate(context, AppRouter.ksignUp);
+    } else {
+      delayedNavigate(context, AppRouter.konboarding);
+    }
     super.initState();
-    initSlidingAnimation();
-    delayedNavigate(context, AppRouter.konboarding);
   }
 
-  void initSlidingAnimation() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 3),
-    );
-    slidingAnimation = Tween(
-      begin: Offset(0, 2),
-      end: Offset.zero,
-    ).animate(animationController);
-    animationController.forward();
-  }
+  // void initSlidingAnimation() {
+  //   animationController = AnimationController(
+  //     vsync: this,
+  //     duration: Duration(seconds: 3),
+  //   );
+  //   slidingAnimation = Tween(
+  //     begin: Offset(0, 2),
+  //     end: Offset.zero,
+  //   ).animate(animationController);
+  //   animationController.forward();
+  // }
 
-  @override
-  void dispose() {
-    super.dispose();
-    animationController.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   animationController.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
           Center(
             child: Text(AppStrings.appName, style: Styles.pacifico400style64),
           ),
-          SlidingText(slidingAnimation: slidingAnimation),
+          //SlidingText(slidingAnimation: slidingAnimation),
         ],
       ),
     );
