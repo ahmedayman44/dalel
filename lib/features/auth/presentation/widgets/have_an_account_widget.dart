@@ -7,23 +7,28 @@ class HaveAnAccountWidget extends StatelessWidget {
     super.key,
     required this.text1,
     required this.text2,
+    this.onTap,
   });
   final String text1;
   final String text2;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Align(
-      child: Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(text: text1, style: Styles.poppins400style12),
-            TextSpan(
-              text: text2,
-              style: Styles.poppins400style12.copyWith(
-                color: AppColor.lightGrey,
+    return GestureDetector(
+      onTap: onTap,
+      child: Align(
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: text1, style: Styles.poppins400style12),
+              TextSpan(
+                text: text2,
+                style: Styles.poppins400style12.copyWith(
+                  color: AppColor.lightGrey,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

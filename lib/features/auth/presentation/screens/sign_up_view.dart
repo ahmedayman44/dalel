@@ -1,3 +1,5 @@
+import 'package:dalel/core/functions/custom_navigate.dart';
+import 'package:dalel/core/routes/routes.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/features/auth/presentation/widgets/custom_sign_up_form.dart';
 import 'package:dalel/features/auth/presentation/widgets/have_an_account_widget.dart';
@@ -6,7 +8,6 @@ import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
-  //GlobalKey<Stat> ke = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +23,9 @@ class SignUpView extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: 16)),
             SliverToBoxAdapter(
               child: HaveAnAccountWidget(
+                onTap: () {
+                  customNavigate(context, AppRouter.ksignIn);
+                },
                 text1: AppStrings.alreadyHaveAnAccount,
                 text2: AppStrings.signIn,
               ),
