@@ -17,7 +17,7 @@ class CustomSignUpForm extends StatelessWidget {
         if (state is SignUpSucess) {
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(SnackBar(content: Text("sucess")));
+          ).showSnackBar(SnackBar(content: Text("Congratolation New Account")));
         } else if (state is SignUpFailure) {
           ScaffoldMessenger.of(
             context,
@@ -35,29 +35,41 @@ class CustomSignUpForm extends StatelessWidget {
               SizedBox(height: 16),
               CustomTextFormField(
                 labelText: AppStrings.fristName,
-                // suffixIcon: Icon(Icons.person),
+                suffixIcon: Icon(Icons.person),
                 onChanged: (fristName) {
                   authCubit.fristName = fristName;
                 },
               ),
               CustomTextFormField(
-                // suffixIcon: Icon(Icons.person),
+                suffixIcon: Icon(Icons.person),
                 labelText: AppStrings.lastName,
                 onChanged: (lastName) {
                   authCubit.lastName = lastName;
                 },
               ),
               CustomTextFormField(
+                suffixIcon: Icon(Icons.email),
                 labelText: AppStrings.emailAddress,
                 onChanged: (emailAddress) {
                   authCubit.emailAddress = emailAddress;
                 },
               ),
               CustomTextFormField(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    authCubit.obsecurePasswordText();
+                  },
+                  icon: Icon(
+                    authCubit.obsecurePasswordTextValue == true
+                        ? Icons.visibility
+                        : Icons.visibility_off_outlined,
+                  ),
+                ),
                 labelText: AppStrings.password,
                 onChanged: (password) {
                   authCubit.password = password;
                 },
+                obscureText: authCubit.obsecurePasswordTextValue,
               ),
               TermsAndConditions(),
               SizedBox(height: 88),

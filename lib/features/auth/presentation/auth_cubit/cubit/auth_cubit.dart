@@ -16,7 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? emailAddress;
   String? password;
   bool? termsAndConditionCheckBoxValue = false;
-  //bool? obsecurePasswordTextValue = true;
+  bool? obsecurePasswordTextValue = true;
 
   //! used when cliked in button without checkBox or no
   updateTermsAndConditionCheckBoxValue({required newValue}) {
@@ -47,13 +47,13 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  // obsecurePasswordText() {
-  //   if (obsecurePasswordTextValue == true) {
-  //     obsecurePasswordTextValue = false;
-  //   } else {
-  //     obsecurePasswordTextValue = true;
-  //   }
+  obsecurePasswordText() {
+    if (obsecurePasswordTextValue == true) {
+      obsecurePasswordTextValue = false;
+    } else {
+      obsecurePasswordTextValue = true;
+    }
 
-  //   emit(obsecurePasswordText());
-  // }
+    emit(obsecurePasswordText());
+  }
 }

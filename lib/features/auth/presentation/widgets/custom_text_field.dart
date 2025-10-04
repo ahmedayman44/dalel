@@ -8,13 +8,15 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     this.onChanged,
     this.onFieldSubmitted,
+    this.suffixIcon,
+    this.obscureText,
   });
 
   final String labelText;
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
-  //final Widget? suffixIcon;
-  //final bool? obscureText;
+  final Widget? suffixIcon;
+  final bool? obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,9 +32,9 @@ class CustomTextFormField extends StatelessWidget {
           }
         },
         onFieldSubmitted: onFieldSubmitted,
-        // obscureText: obscureText ?? false,
+        obscureText: obscureText ?? false,
         decoration: InputDecoration(
-          //  suffixIcon: suffixIcon,
+          suffixIcon: suffixIcon,
           labelText: labelText,
           labelStyle: Styles.poppins500style15,
           border: getBorderStyle(),
