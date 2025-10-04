@@ -13,6 +13,8 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
+  //final Widget? suffixIcon;
+  //final bool? obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,8 +22,17 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         //! any thing will add in TextFormField will put in value when any change happened will listen direct but in onFieldSubmitted any after suibmited will listen
         onChanged: onChanged,
+        validator: (value) {
+          if (value?.isEmpty ?? true) {
+            return "Field is required";
+          } else {
+            return null;
+          }
+        },
         onFieldSubmitted: onFieldSubmitted,
+        // obscureText: obscureText ?? false,
         decoration: InputDecoration(
+          //  suffixIcon: suffixIcon,
           labelText: labelText,
           labelStyle: Styles.poppins500style15,
           border: getBorderStyle(),

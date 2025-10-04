@@ -1,3 +1,4 @@
+import 'package:dalel/core/utils/app_color.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/widgets/custom_button.dart';
 import 'package:dalel/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
@@ -23,46 +24,54 @@ class CustomSignUpForm extends StatelessWidget {
           ).showSnackBar(SnackBar(content: Text(state.errMessage)));
         }
       },
-      //AuthCubit authCubit = BlocProvider.of<AuthCubit>(context),
+
       builder: (context, state) {
+        AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
-          //key: ,
+          key: authCubit.signUpFormKey,
+          autovalidateMode: authCubit.signUpAutovalidateMode,
           child: Column(
             children: [
               SizedBox(height: 16),
-
               CustomTextFormField(
                 labelText: AppStrings.fristName,
+                // suffixIcon: Icon(Icons.person),
                 onChanged: (fristName) {
-                  BlocProvider.of<AuthCubit>(context).fristName = fristName;
+                  authCubit.fristName = fristName;
                 },
               ),
               CustomTextFormField(
+                // suffixIcon: Icon(Icons.person),
                 labelText: AppStrings.lastName,
                 onChanged: (lastName) {
-                  BlocProvider.of<AuthCubit>(context).lastName = lastName;
+                  authCubit.lastName = lastName;
                 },
               ),
               CustomTextFormField(
                 labelText: AppStrings.emailAddress,
                 onChanged: (emailAddress) {
-                  BlocProvider.of<AuthCubit>(context).emailAddress =
-                      emailAddress;
+                  authCubit.emailAddress = emailAddress;
                 },
               ),
               CustomTextFormField(
                 labelText: AppStrings.password,
                 onChanged: (password) {
-                  BlocProvider.of<AuthCubit>(context).password = password;
+                  authCubit.password = password;
                 },
               ),
               TermsAndConditions(),
               SizedBox(height: 88),
               CustomButton(
+                color:
+                    authCubit.termsAndConditionCheckBoxValue == false
+                        ? AppColor.grey
+                        : null,
                 onPressed: () {
-                  BlocProvider.of<AuthCubit>(
-                    context,
-                  ).signUpCreateUserWithEmailAndPassword();
+                  if (authCubit.termsAndConditionCheckBoxValue == true) {
+                    if (authCubit.signUpFormKey.currentState!.validate()) {
+                      authCubit.signUpCreateUserWithEmailAndPassword();
+                    }
+                  }
                 },
                 textButton: AppStrings.signUp,
               ),
