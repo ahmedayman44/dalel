@@ -1,9 +1,12 @@
+import 'package:dalel/core/services/servece_locator.dart';
+import 'package:dalel/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
 import 'package:dalel/features/auth/presentation/screens/sign_in_view.dart';
 import 'package:dalel/features/auth/presentation/screens/sign_up_view.dart';
 import 'package:dalel/features/home/presentation/screens/home_screen.dart';
 import 'package:dalel/features/onboarding/presentation/screens/on_boaarding_screen.dart';
 import 'package:dalel/features/splash/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   static const String konboarding = '/onboarding';
@@ -15,8 +18,24 @@ class AppRouter {
       GoRoute(path: '/', builder: (context, state) => SplashScreen()),
       GoRoute(path: konboarding, builder: (context, state) => OnBoardingView()),
       GoRoute(path: khome, builder: (context, state) => HomeView()),
-      GoRoute(path: ksignUp, builder: (context, state) => SignUpView()),
-      GoRoute(path: ksignIn, builder: (context, state) => SignInView()),
+      GoRoute(
+        path: ksignUp,
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => getIt<AuthCubit>(),
+              child: SignUpView(),
+            ),
+      ),
+
+      GoRoute(
+        path: ksignIn,
+        builder:
+            //! we add bloc above screen that we will use
+            (context, state) => BlocProvider(
+              create: (context) => getIt<AuthCubit>(),
+              child: SignInView(),
+            ),
+      ),
     ],
   );
 }
