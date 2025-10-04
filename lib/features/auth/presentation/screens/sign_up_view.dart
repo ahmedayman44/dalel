@@ -1,14 +1,12 @@
 import 'package:dalel/core/utils/app_strings.dart';
-import 'package:dalel/core/widgets/custom_button.dart';
-import 'package:dalel/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:dalel/features/auth/presentation/widgets/custom_sign_up_form.dart';
 import 'package:dalel/features/auth/presentation/widgets/have_an_account_widget.dart';
-import 'package:dalel/features/auth/presentation/widgets/terms_and_condition.dart';
 import 'package:dalel/features/auth/presentation/widgets/welcome_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
-
+  //GlobalKey<Stat> ke = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,27 +18,7 @@ class SignUpView extends StatelessWidget {
             SliverToBoxAdapter(
               child: WelcomeTextWidget(text: AppStrings.welcome),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: 16)),
-            SliverToBoxAdapter(
-              child: CustomTextField(labelText: AppStrings.fristName),
-            ),
-            SliverToBoxAdapter(
-              child: CustomTextField(labelText: AppStrings.lastName),
-            ),
-            SliverToBoxAdapter(
-              child: CustomTextField(labelText: AppStrings.emailAddress),
-            ),
-            SliverToBoxAdapter(
-              child: CustomTextField(labelText: AppStrings.password),
-            ),
-            SliverToBoxAdapter(child: TermsAndConditions()),
-            SliverToBoxAdapter(child: SizedBox(height: 88)),
-            SliverToBoxAdapter(
-              child: CustomButton(
-                onPressed: () {},
-                textButton: AppStrings.signUp,
-              ),
-            ),
+            SliverToBoxAdapter(child: CustomSignUpForm()),
             SliverToBoxAdapter(child: SizedBox(height: 16)),
             SliverToBoxAdapter(
               child: HaveAnAccountWidget(
@@ -48,6 +26,7 @@ class SignUpView extends StatelessWidget {
                 text2: AppStrings.signIn,
               ),
             ),
+            SliverToBoxAdapter(child: SizedBox(height: 16)),
           ],
         ),
       ),
