@@ -47,7 +47,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInLoading());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -62,6 +62,8 @@ class AuthCubit extends Cubit<AuthState> {
         emit(
           SignUpFailure(errMessage: 'Wrong password provided for that user.'),
         );
+      } else {
+        emit(SignInFailure(errMessage: "Check your Email and Password "));
       }
     } catch (e) {
       emit(SignInFailure(errMessage: e.toString()));
