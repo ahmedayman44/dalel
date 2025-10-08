@@ -18,14 +18,13 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpSucess) {
-          showToast("Congratolation New Account");
+          showToast("Created New Account");
           // ScaffoldMessenger.of(
           //   context,
           // ).showSnackBar(SnackBar(content: Text("Congratolation New Account")));
-          customReplacementNavigate(context, AppRouter.ksignIn);
+          customReplacementNavigate(context, AppRouter.khome);
         } else if (state is SignUpFailure) {
           showToast(state.errMessage);
-          customNavigate(context, AppRouter.ksignIn);
           // ScaffoldMessenger.of(
           //   context,
           // ).showSnackBar(SnackBar(content: Text(state.errMessage)));
@@ -42,20 +41,20 @@ class CustomSignUpForm extends StatelessWidget {
               SizedBox(height: 16),
               CustomTextFormField(
                 labelText: AppStrings.fristName,
-                suffixIcon: Icon(Icons.person),
+                //suffixIcon: Icon(Icons.person),
                 onChanged: (fristName) {
                   authCubit.fristName = fristName;
                 },
               ),
               CustomTextFormField(
-                suffixIcon: Icon(Icons.person),
+                //suffixIcon: Icon(Icons.person),
                 labelText: AppStrings.lastName,
                 onChanged: (lastName) {
                   authCubit.lastName = lastName;
                 },
               ),
               CustomTextFormField(
-                suffixIcon: Icon(Icons.email),
+                //suffixIcon: Icon(Icons.email),
                 labelText: AppStrings.emailAddress,
                 onChanged: (emailAddress) {
                   authCubit.emailAddress = emailAddress;

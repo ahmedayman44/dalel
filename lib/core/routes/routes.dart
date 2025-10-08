@@ -1,4 +1,3 @@
-import 'package:dalel/core/services/servece_locator.dart';
 import 'package:dalel/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
 import 'package:dalel/features/auth/presentation/screens/sign_in_view.dart';
 import 'package:dalel/features/auth/presentation/screens/sign_up_view.dart';
@@ -22,7 +21,7 @@ class AppRouter {
         path: ksignUp,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => getIt<AuthCubit>(),
+              create: (context) => AuthCubit(),
               child: SignUpView(),
             ),
       ),
@@ -32,10 +31,11 @@ class AppRouter {
         builder:
             //! we add bloc above screen that we will use
             (context, state) => BlocProvider(
-              create: (context) => getIt<AuthCubit>(),
+              create: (context) => AuthCubit(),
               child: SignInView(),
             ),
       ),
+      GoRoute(path: khome, builder: (context, state) => HomeView()),
     ],
   );
 }

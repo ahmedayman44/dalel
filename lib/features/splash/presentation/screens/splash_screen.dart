@@ -5,6 +5,7 @@ import 'package:dalel/core/services/servece_locator.dart';
 import 'package:dalel/core/utils/app_constant.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +25,9 @@ class _SplashScreenState extends State<SplashScreen> {
     bool onBoardingVisited =
         getIt<CacheHelper>().getData(key: "OnBoardingVisited") ?? false;
     if (onBoardingVisited == true) {
-      delayedNavigate(context, AppRouter.ksignUp);
+      FirebaseAuth.instance.currentUser == null
+          ? delayedNavigate(context, AppRouter.ksignUp)
+          : delayedNavigate(context, AppRouter.khome);
     } else {
       delayedNavigate(context, AppRouter.konboarding);
     }
