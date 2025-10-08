@@ -44,4 +44,10 @@ class Styles {
     color: Colors.black,
     fontFamily: 'Poppins',
   );
+  static final saira700style32 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: AppColor.offWhite,
+    fontFamily: 'Saira',
+  );
 }

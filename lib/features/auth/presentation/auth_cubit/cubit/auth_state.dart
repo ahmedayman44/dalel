@@ -18,3 +18,13 @@ final class SignUpFailure extends AuthState {
 final class UpdateTermsAndConditionCheckBoxValue extends AuthState {}
 
 final class ObscurePasswordTextUpdateState extends AuthState {}
+
+final class SignInLoading extends AuthState {}
+
+final class SignInSucess extends AuthState {}
+
+final class SignInFailure extends AuthState {
+  final String errMessage;
+
+  SignInFailure({required this.errMessage});
+}

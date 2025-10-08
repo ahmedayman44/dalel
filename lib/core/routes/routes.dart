@@ -1,4 +1,5 @@
 import 'package:dalel/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
+import 'package:dalel/features/auth/presentation/screens/forrget_password_view.dart';
 import 'package:dalel/features/auth/presentation/screens/sign_in_view.dart';
 import 'package:dalel/features/auth/presentation/screens/sign_up_view.dart';
 import 'package:dalel/features/home/presentation/screens/home_screen.dart';
@@ -12,6 +13,8 @@ class AppRouter {
   static const String khome = '/home';
   static const String ksignIn = "/signIn";
   static const String ksignUp = "/signUp";
+  static const String kforgetPassword = "/forgetPassword";
+
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => SplashScreen()),
@@ -36,6 +39,10 @@ class AppRouter {
             ),
       ),
       GoRoute(path: khome, builder: (context, state) => HomeView()),
+      GoRoute(
+        path: kforgetPassword,
+        builder: (context, state) => ForrgetPasswordView(),
+      ),
     ],
   );
 }

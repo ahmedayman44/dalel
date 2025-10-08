@@ -9,6 +9,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   GlobalKey<FormState> signUpFormKey = GlobalKey();
   AutovalidateMode signUpAutovalidateMode = AutovalidateMode.disabled;
+  GlobalKey<FormState> signInFormKey = GlobalKey();
 
   String? fristName;
   String? lastName;
@@ -43,6 +44,27 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       emit(SignUpFailure(errMessage: e.toString()));
+    }
+  }
+
+  signInWithEmailAndPassword() async {
+    try {
+      emit(SignInLoading());
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
+      );
+      emit(SignInSucess());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailure(errMessage: 'No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        emit(
+          SignUpFailure(errMessage: 'Wrong password provided for that user.'),
+        );
+      }
+    } catch (e) {
+      emit(SignInFailure(errMessage: e.toString()));
     }
   }
 
