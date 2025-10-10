@@ -23,14 +23,17 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // initSlidingAnimation();
     bool onBoardingVisited =
-        getIt<CacheHelper>().getData(key: "OnBoardingVisited") ?? false;
+        getIt<CacheHelper>().getData(key: "onBoardingVisited") ?? false;
     if (onBoardingVisited == true) {
       FirebaseAuth.instance.currentUser == null
           ? delayedNavigate(context, AppRouter.ksignIn)
-          : delayedNavigate(context, AppRouter.khome);
+          : FirebaseAuth.instance.currentUser!.emailVerified == true
+          ? delayedNavigate(context, AppRouter.khome)
+          : delayedNavigate(context, AppRouter.ksignIn);
     } else {
       delayedNavigate(context, AppRouter.konboarding);
     }
+
     super.initState();
   }
 

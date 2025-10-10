@@ -18,11 +18,11 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpSucess) {
-          showToast("Created New Account");
+          showToast("Sucessfully ,Check Your Email To Veify Your Account ");
           // ScaffoldMessenger.of(
           //   context,
           // ).showSnackBar(SnackBar(content: Text("Congratolation New Account")));
-          customReplacementNavigate(context, AppRouter.khome);
+          customReplacementNavigate(context, AppRouter.ksignIn);
         } else if (state is SignUpFailure) {
           showToast(state.errMessage);
           // ScaffoldMessenger.of(
